@@ -1,11 +1,13 @@
 import Image from "next/image";
 import Link from "next/link";
 import HeroSection from "./Components/HeroSection";
+import ProductHighlights from "./Components/ProductHighlight";
 
 export default function Home() {
   return (
     <>
-    <HeroSection></HeroSection>
+      <HeroSection></HeroSection>
+      <ProductHighlights></ProductHighlights>
     </>
   );
 }
