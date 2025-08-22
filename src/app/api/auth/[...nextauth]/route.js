@@ -44,11 +44,6 @@ export const authOptions = {
             if (token?.name) session.user.name = token.name;
             return session;
         },
-        async redirect({ url, baseUrl }) {
-            if (url.startsWith(baseUrl)) return url;
-            if (url.startsWith("/")) return `${baseUrl}${url}`;
-            return baseUrl;
-        },
     },
     secret: process.env.NEXTAUTH_SECRET,
 };
