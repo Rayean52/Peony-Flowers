@@ -28,16 +28,25 @@ export const authOptions = {
         }),
     ],
     session: { strategy: "jwt" },
-    pages: {
-        signIn: "/login", // must exist
-    },
+    // pages: {
+    //     signIn: "/login", // must exist
+    // },
     callbacks: {
+        async jwt({ token, user }) {
+            if (user) {
+                token.id = user.id;
+                token.name = user.name;
+            }
+            return token;
+        },
+        async session({ session, token }) {
+            if (token?.id) session.user.id = token.id;
+            if (token?.name) session.user.name = token.name;
+            return session;
+        },
         async redirect({ url, baseUrl }) {
-            // If url starts with baseUrl (safe), allow it
             if (url.startsWith(baseUrl)) return url;
-            // If url is a relative path (e.g. /dashboard), allow it
             if (url.startsWith("/")) return `${baseUrl}${url}`;
-            // Fallback
             return baseUrl;
         },
     },
