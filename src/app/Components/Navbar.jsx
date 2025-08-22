@@ -1,22 +1,18 @@
 'use client'
 import React, { useState } from 'react';
-import { Menu, X, ChevronDown, User, Settings, LogOut, Package, BarChart } from 'lucide-react';
+import { Menu, X, ChevronDown, LogOut, BarChart } from 'lucide-react';
 import Link from 'next/link';
+import { useSession, signOut } from "next-auth/react";
 
 const Navbar = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-    const [isLoggedIn, setIsLoggedIn] = useState(false); // Toggle this to test both states
+    const { data: session } = useSession();
 
     const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
     const toggleDropdown = () => setIsDropdownOpen(!isDropdownOpen);
-
-    // Mock user data - replace with actual user data
-    const user = {
-        name: "Sarah Johnson",
-        email: "sarah@example.com",
-        avatar: "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=150&h=150&fit=crop&crop=face"
-    };
+    
+    
 
     return (
         <nav className="bg-gradient-to-r from-rose-50 to-pink-50 shadow-lg border-b border-rose-100 sticky top-0 z-50">
@@ -24,7 +20,9 @@ const Navbar = () => {
                 <div className="flex justify-between items-center h-16">
                     {/* Logo */}
                     <div className="flex items-center">
-                        <div className="flex-shrink-0 flex items-center">
+                        <div
+                            className="flex-shrink-0 flex items-center
+                            ">
                             <div className="w-10 h-10 bg-gradient-to-br from-rose-400 to-pink-500 rounded-full flex items-center justify-center mr-3 shadow-md">
                                 <span className="text-white font-bold text-lg">🌸</span>
                             </div>
@@ -60,14 +58,14 @@ const Navbar = () => {
 
                     {/* Auth Section */}
                     <div className="hidden md:flex items-center space-x-4">
-                        {!isLoggedIn ? (
+                        {!session ? (
                             <div className="flex items-center space-x-3">
-                                <button
-                                    onClick={() => setIsLoggedIn(true)}
+                                <Link
+                                    href="/sign-up"
                                     className="bg-gradient-to-r from-rose-500 to-pink-500 text-white px-6 py-2 rounded-full text-sm font-medium hover:from-rose-600 hover:to-pink-600 transition-all duration-300 transform hover:-translate-y-0.5 hover:shadow-lg"
                                 >
                                     Sign In
-                                </button>
+                                </Link>
                             </div>
                         ) : (
                             <div className="relative">
@@ -75,12 +73,7 @@ const Navbar = () => {
                                     onClick={toggleDropdown}
                                     className="flex items-center space-x-2 bg-white rounded-full p-2 pr-4 shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-0.5"
                                 >
-                                    <img
-                                        src={user.avatar}
-                                        alt={user.name}
-                                        className="w-8 h-8 rounded-full object-cover border-2 border-rose-200"
-                                    />
-                                    <span className="text-rose-700 font-medium text-sm">{user.name}</span>
+                                    <span className="text-rose-700 font-medium text-sm">{session.user?.name}</span>
                                     <ChevronDown className={`w-4 h-4 text-rose-500 transition-transform duration-200 ${isDropdownOpen ? 'rotate-180' : ''}`} />
                                 </button>
 
@@ -88,8 +81,8 @@ const Navbar = () => {
                                 {isDropdownOpen && (
                                     <div className="absolute right-0 mt-2 w-64 bg-white rounded-2xl shadow-xl border border-rose-100 py-2 z-50 transform transition-all duration-200 origin-top-right">
                                         <div className="px-4 py-3 border-b border-rose-50">
-                                            <p className="text-sm font-medium text-gray-900">{user.name}</p>
-                                            <p className="text-xs text-gray-500">{user.email}</p>
+                                            <p className="text-sm font-medium text-gray-900">{session.user?.name}</p>
+                                            <p className="text-xs text-gray-500">{session.user?.email}</p>
                                         </div>
                                         <div className="py-1">
                                             <Link
@@ -101,9 +94,9 @@ const Navbar = () => {
                                             </Link>
                                             <hr className="my-2 border-rose-50" />
                                             <button
-                                                onClick={() => {
-                                                    setIsLoggedIn(false);
+                                                    onClick={() => {
                                                     setIsDropdownOpen(false);
+                                                    signOut()
                                                 }}
                                                 className="flex items-center w-full text-left px-4 py-2 text-sm text-red-600 hover:bg-red-50 transition-colors duration-200"
                                             >
@@ -155,27 +148,22 @@ const Navbar = () => {
 
                     {/* Mobile Auth Section */}
                     <div className="px-4 py-3 border-t border-rose-100">
-                        {!isLoggedIn ? (
-                            <button
+                        {!session ? (
+                            <Link
+                                href="/login"
                                 onClick={() => {
-                                    setIsLoggedIn(true);
                                     setIsMenuOpen(false);
                                 }}
                                 className="w-full bg-gradient-to-r from-rose-500 to-pink-500 text-white px-4 py-2 rounded-full text-sm font-medium hover:from-rose-600 hover:to-pink-600 transition-all duration-300"
                             >
                                 Sign In
-                            </button>
+                            </Link>
                         ) : (
                             <div className="space-y-2">
                                 <div className="flex items-center space-x-3 pb-2 border-b border-rose-100">
-                                    <img
-                                        src={user.avatar}
-                                        alt={user.name}
-                                        className="w-10 h-10 rounded-full object-cover border-2 border-rose-200"
-                                    />
                                     <div>
-                                        <p className="text-sm font-medium text-gray-900">{user.name}</p>
-                                        <p className="text-xs text-gray-500">{user.email}</p>
+                                        <p className="text-sm font-medium text-gray-900">{session.user?.name}</p>
+                                        <p className="text-xs text-gray-500">{session.user?.email}</p>
                                     </div>
                                 </div>
                                 <Link
@@ -187,8 +175,8 @@ const Navbar = () => {
                                 </Link>
                                
                                 <button
-                                    onClick={() => {
-                                        setIsLoggedIn(false);
+                                        onClick={() => {
+                                        signOut()
                                         setIsMenuOpen(false);
                                     }}
                                     className="flex items-center w-full text-left px-3 py-2 text-sm text-red-600 hover:bg-red-50 rounded-md transition-colors duration-200"
