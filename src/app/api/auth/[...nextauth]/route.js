@@ -13,7 +13,7 @@ export const authOptions = {
             },
             async authorize(credentials) {
                 const client = await clientPromise;
-                const db = client.db("mydb"); // change name if you like
+                const db = client.db("peony-shop"); 
                 const users = db.collection("users");
 
                 const user = await users.findOne({ email: credentials.email });
@@ -29,7 +29,7 @@ export const authOptions = {
     ],
     session: { strategy: "jwt" },
     pages: {
-        signIn: "/login", // your login page route
+        signIn: "/login", 
     },
     callbacks: {
         async jwt({ token, user }) {
