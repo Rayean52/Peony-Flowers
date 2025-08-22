@@ -39,7 +39,7 @@ export default function ProductHighlights() {
                 name: "Rose Elegance Bouquet",
                 price: "$89.99",
                 originalPrice: "$109.99",
-                image: "/products/roses.jpg",
+                image: "/rose.jpg",
                 rating: 4.9,
                 reviews: 247,
                 badge: "Bestseller",
@@ -49,7 +49,7 @@ export default function ProductHighlights() {
                 id: 2,
                 name: "Sunshine Lily Arrangement",
                 price: "$79.99",
-                image: "/products/lilies.jpg",
+                image: "/marigold.jpg",
                 rating: 4.8,
                 reviews: 189,
                 badge: "Popular",
@@ -59,7 +59,7 @@ export default function ProductHighlights() {
                 id: 3,
                 name: "Mixed Spring Garden",
                 price: "$65.99",
-                image: "/products/mixed.jpg",
+                image: "/hortensia.jpg",
                 rating: 4.7,
                 reviews: 156,
                 badge: "New",
@@ -69,7 +69,7 @@ export default function ProductHighlights() {
                 id: 4,
                 name: "Orchid Paradise",
                 price: "$124.99",
-                image: "/products/orchids.jpg",
+                image: "/lily.jpg",
                 rating: 4.9,
                 reviews: 98,
                 badge: "Premium",
@@ -81,7 +81,7 @@ export default function ProductHighlights() {
                 id: 5,
                 name: "Bridal White Cascade",
                 price: "$299.99",
-                image: "/products/bridal.jpg",
+                image: "/pink.jpg",
                 rating: 5.0,
                 reviews: 67,
                 badge: "Premium",
@@ -91,7 +91,7 @@ export default function ProductHighlights() {
                 id: 6,
                 name: "Bridesmaid Blush",
                 price: "$149.99",
-                image: "/products/blush.jpg",
+                image: "/rose.jpg",
                 rating: 4.8,
                 reviews: 89,
                 badge: "Popular",
@@ -103,7 +103,7 @@ export default function ProductHighlights() {
                 id: 7,
                 name: "Love Story Roses",
                 price: "$99.99",
-                image: "/products/romantic.jpg",
+                image: "/sunflower.jpg",
                 rating: 4.9,
                 reviews: 234,
                 badge: "Bestseller",
@@ -113,7 +113,7 @@ export default function ProductHighlights() {
                 id: 8,
                 name: "Valentine's Special",
                 price: "$139.99",
-                image: "/products/valentine.jpg",
+                image: "/spring.jpg",
                 rating: 4.8,
                 reviews: 167,
                 badge: "Limited",
@@ -125,7 +125,7 @@ export default function ProductHighlights() {
                 id: 9,
                 name: "Birthday Surprise",
                 price: "$74.99",
-                image: "/products/birthday.jpg",
+                image: "/orchid.jpg",
                 rating: 4.7,
                 reviews: 145,
                 badge: "Popular",
@@ -135,7 +135,7 @@ export default function ProductHighlights() {
                 id: 10,
                 name: "Congratulations Bloom",
                 price: "$89.99",
-                image: "/products/congrats.jpg",
+                image: "/tulip.jpg",
                 rating: 4.8,
                 reviews: 122,
                 badge: "New",
@@ -285,7 +285,7 @@ export default function ProductHighlights() {
                 {/* View All Button */}
                 <div className={`text-center mt-16 transition-all duration-1000 delay-600 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
                     <Link
-                        href="/shop"
+                        href=""
                         className="group inline-flex items-center justify-center px-8 py-4 bg-gradient-to-r from-pink-600 to-rose-600 text-white font-semibold rounded-full shadow-lg hover:shadow-2xl transform hover:-translate-y-1 transition-all duration-300 overflow-hidden"
                     >
                         <span className="relative z-10 flex items-center gap-2">

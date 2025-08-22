@@ -38,7 +38,7 @@ export async function POST(request) {
 
         const client = await clientPromise;
         const db = client.db("peony-shop");
-        const flowers = db.collection("flowers");
+        const flowers = db.collection("added-flowers");
 
         const result = await flowers.insertOne({
             name,
