@@ -1,17 +1,22 @@
 import clientPromise from "@/lib/mongodb";
 import { NextResponse } from "next/server";
 
+
+
 // Handle GET (list flowers)
 export async function GET() {
     try {
         const client = await clientPromise;
-        const db = client.db("peony-shop"); 
-        const flowers = await db.collection("flowers").find().toArray();
+        const db = client.db("peony-shop");
+        const collection = db.collection("flowers");
 
-        return NextResponse.json(flowers);
+        const flowers = await collection.find().toArray();
+
+        return new Response(JSON.stringify(flowers), { status: 200 });
     } catch (error) {
-        return NextResponse.json(
-            { error: "Failed to fetch flowers" },
+        console.error("Error fetching flowers:", error);
+        return new Response(
+            JSON.stringify({ error: "Failed to fetch flowers" }),
             { status: 500 }
         );
     }
@@ -56,3 +61,6 @@ export async function POST(request) {
         );
     }
 }
+
+
+

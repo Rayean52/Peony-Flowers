@@ -102,14 +102,14 @@ export default function DashboardPage() {
             <div className="bg-gradient-to-r from-pink-500 to-rose-500 rounded-2xl p-8 text-white shadow-xl">
                 <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
                     <div>
-                        <h1 className="text-3xl font-bold mb-2">Welcome to BloomBeauty Dashboard 🌺</h1>
+                        <h1 className="text-3xl font-bold mb-2">Welcome to Peony Dashboard 🌺</h1>
                         <p className="text-pink-100">Manage your flower inventory, track orders, and grow your business.</p>
                     </div>
                     <div className="flex gap-3">
-                        <Link href="/dashboard/flowers/add" className="px-6 py-3 bg-white text-pink-600 rounded-lg font-semibold hover:shadow-lg transform hover:-translate-y-1 transition-all duration-300">
+                        <Link href="" className="px-6 py-3 bg-white text-pink-600 rounded-lg font-semibold hover:shadow-lg transform hover:-translate-y-1 transition-all duration-300">
                             Add Product
                         </Link>
-                        <Link href="/dashboard/orders" className="px-6 py-3 bg-pink-600 text-white rounded-lg font-semibold hover:bg-pink-700 transition-all duration-300">
+                        <Link href="" className="px-6 py-3 bg-pink-600 text-white rounded-lg font-semibold hover:bg-pink-700 transition-all duration-300">
                             View Orders
                         </Link>
                     </div>
@@ -140,7 +140,7 @@ export default function DashboardPage() {
                         <h3 className="text-xl font-bold text-gray-800 flex items-center gap-2">
                             📋 Recent Orders
                         </h3>
-                        <Link href="/dashboard/orders" className="text-pink-600 hover:text-pink-700 text-sm font-medium">
+                        <Link href="" className="text-pink-600 hover:text-pink-700 text-sm font-medium">
                             View All →
                         </Link>
                     </div>
@@ -185,7 +185,7 @@ export default function DashboardPage() {
                         <h3 className="text-xl font-bold text-gray-800 flex items-center gap-2">
                             🏆 Top Products
                         </h3>
-                        <Link href="/dashboard/flowers" className="text-pink-600 hover:text-pink-700 text-sm font-medium">
+                        <Link href="" className="text-pink-600 hover:text-pink-700 text-sm font-medium">
                             View All →
                         </Link>
                     </div>
@@ -220,7 +220,7 @@ export default function DashboardPage() {
                         ⚡ Quick Actions
                     </h3>
                     <div className="grid grid-cols-2 gap-4">
-                        <Link href="/dashboard/flowers/add" className="p-4 bg-gradient-to-r from-pink-50 to-rose-50 border border-pink-200 rounded-xl hover:from-pink-100 hover:to-rose-100 transition-all duration-300 group">
+                        <Link href="" className="p-4 bg-gradient-to-r from-pink-50 to-rose-50 border border-pink-200 rounded-xl hover:from-pink-100 hover:to-rose-100 transition-all duration-300 group">
                             <div className="flex flex-col items-center text-center">
                                 <div className="w-12 h-12 bg-gradient-to-r from-pink-500 to-rose-500 rounded-full flex items-center justify-center text-white mb-3 group-hover:scale-110 transition-transform">
                                     <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -231,7 +231,7 @@ export default function DashboardPage() {
                             </div>
                         </Link>
 
-                        <Link href="/dashboard/orders/new" className="p-4 bg-gradient-to-r from-blue-50 to-cyan-50 border border-blue-200 rounded-xl hover:from-blue-100 hover:to-cyan-100 transition-all duration-300 group">
+                        <Link href="" className="p-4 bg-gradient-to-r from-blue-50 to-cyan-50 border border-blue-200 rounded-xl hover:from-blue-100 hover:to-cyan-100 transition-all duration-300 group">
                             <div className="flex flex-col items-center text-center">
                                 <div className="w-12 h-12 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full flex items-center justify-center text-white mb-3 group-hover:scale-110 transition-transform">
                                     <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -242,7 +242,7 @@ export default function DashboardPage() {
                             </div>
                         </Link>
 
-                        <Link href="/dashboard/customers" className="p-4 bg-gradient-to-r from-green-50 to-emerald-50 border border-green-200 rounded-xl hover:from-green-100 hover:to-emerald-100 transition-all duration-300 group">
+                        <Link href="" className="p-4 bg-gradient-to-r from-green-50 to-emerald-50 border border-green-200 rounded-xl hover:from-green-100 hover:to-emerald-100 transition-all duration-300 group">
                             <div className="flex flex-col items-center text-center">
                                 <div className="w-12 h-12 bg-gradient-to-r from-green-500 to-emerald-500 rounded-full flex items-center justify-center text-white mb-3 group-hover:scale-110 transition-transform">
                                     <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -253,7 +253,7 @@ export default function DashboardPage() {
                             </div>
                         </Link>
 
-                        <Link href="/dashboard/analytics" className="p-4 bg-gradient-to-r from-purple-50 to-indigo-50 border border-purple-200 rounded-xl hover:from-purple-100 hover:to-indigo-100 transition-all duration-300 group">
+                        <Link href="" className="p-4 bg-gradient-to-r from-purple-50 to-indigo-50 border border-purple-200 rounded-xl hover:from-purple-100 hover:to-indigo-100 transition-all duration-300 group">
                             <div className="flex flex-col items-center text-center">
                                 <div className="w-12 h-12 bg-gradient-to-r from-purple-500 to-indigo-500 rounded-full flex items-center justify-center text-white mb-3 group-hover:scale-110 transition-transform">
                                     <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -329,7 +329,7 @@ export default function DashboardPage() {
                     <div className="text-center">
                         <div className="text-4xl mb-2">📊</div>
                         <p className="text-gray-600">Sales chart will be displayed here</p>
-                        <p className="text-sm text-gray-500 mt-1">Integration with chart library required</p>
+                        <p className="text-sm text-gray-500 mt-1">Integration with chart library coming soon...</p>
                     </div>
                 </div>
 

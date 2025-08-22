@@ -1,148 +1,31 @@
 'use client'
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Eye, ShoppingCart, ChevronLeft, ChevronRight, Star, Heart } from 'lucide-react';
 import Link from 'next/link';
 
 const FlowersPage = () => {
     const [currentPage, setCurrentPage] = useState(1);
     const [favorites, setFavorites] = useState(new Set());
+    const [allFlowers, setAllFlowers] = useState([]);
+    const [loading, setLoading] = useState(true);
     const flowersPerPage = 8;
 
-    // Mock flower data - replace with your actual data
-    const allFlowers = [
-        {
-            id: 1,
-            name: "Red Rose Bouquet",
-            price: 45.99,
-            originalPrice: 55.99,
-            image: "https://images.unsplash.com/photo-1518895949257-7621c3c786d7?w=400&h=300&fit=crop",
-            rating: 4.8,
-            reviews: 124,
-            category: "Roses",
-            description: "Beautiful red roses perfect for romantic occasions"
-        },
-        {
-            id: 2,
-            name: "Sunflower Delight",
-            price: 32.99,
-            originalPrice: null,
-            image: "https://images.unsplash.com/photo-1597848212624-e593ca2d70ea?w=400&h=300&fit=crop",
-            rating: 4.9,
-            reviews: 89,
-            category: "Sunflowers",
-            description: "Bright and cheerful sunflowers to brighten your day"
-        },
-        {
-            id: 3,
-            name: "Pink Tulip Arrangement",
-            price: 38.50,
-            originalPrice: 42.50,
-            image: "https://images.unsplash.com/photo-1520763185298-1b434c919102?w=400&h=300&fit=crop",
-            rating: 4.7,
-            reviews: 156,
-            category: "Tulips",
-            description: "Elegant pink tulips in a beautiful arrangement"
-        },
-        {
-            id: 4,
-            name: "White Lily Bouquet",
-            price: 52.99,
-            originalPrice: null,
-            image: "https://images.unsplash.com/photo-1490750967868-88aa4486c946?w=400&h=300&fit=crop",
-            rating: 4.9,
-            reviews: 203,
-            category: "Lilies",
-            description: "Pure white lilies symbolizing peace and rebirth"
-        },
-        {
-            id: 5,
-            name: "Mixed Wildflowers",
-            price: 28.99,
-            originalPrice: 35.99,
-            image: "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=400&h=300&fit=crop",
-            rating: 4.6,
-            reviews: 78,
-            category: "Mixed",
-            description: "A vibrant mix of seasonal wildflowers"
-        },
-        {
-            id: 6,
-            name: "Purple Orchids",
-            price: 68.99,
-            originalPrice: null,
-            image: "https://images.unsplash.com/photo-1591886960571-74d43a9d4166?w=400&h=300&fit=crop",
-            rating: 4.8,
-            reviews: 92,
-            category: "Orchids",
-            description: "Exotic purple orchids for the sophisticated taste"
-        },
-        {
-            id: 7,
-            name: "Peach Peonies",
-            price: 58.50,
-            originalPrice: 65.50,
-            image: "https://images.unsplash.com/photo-1594736797933-d0b22ee80ff4?w=400&h=300&fit=crop",
-            rating: 4.9,
-            reviews: 167,
-            category: "Peonies",
-            description: "Soft peach peonies perfect for special celebrations"
-        },
-        {
-            id: 8,
-            name: "Yellow Daffodils",
-            price: 24.99,
-            originalPrice: null,
-            image: "https://images.unsplash.com/photo-1584464491033-06628f3a6b7b?w=400&h=300&fit=crop",
-            rating: 4.7,
-            reviews: 134,
-            category: "Daffodils",
-            description: "Cheerful yellow daffodils bringing spring vibes"
-        },
-        {
-            id: 9,
-            name: "Blue Hydrangeas",
-            price: 42.99,
-            originalPrice: 48.99,
-            image: "https://images.unsplash.com/photo-1563465936534-c3bdc8e3a835?w=400&h=300&fit=crop",
-            rating: 4.8,
-            reviews: 118,
-            category: "Hydrangeas",
-            description: "Beautiful blue hydrangeas for elegant decor"
-        },
-        {
-            id: 10,
-            name: "Pink Cherry Blossoms",
-            price: 36.99,
-            originalPrice: null,
-            image: "https://images.unsplash.com/photo-1522673607200-164d1b6ce486?w=400&h=300&fit=crop",
-            rating: 4.9,
-            reviews: 201,
-            category: "Cherry Blossoms",
-            description: "Delicate pink cherry blossoms for spring celebrations"
-        },
-        {
-            id: 11,
-            name: "Orange Marigolds",
-            price: 22.99,
-            originalPrice: 27.99,
-            image: "https://images.unsplash.com/photo-1597691357473-e64bf0c87295?w=400&h=300&fit=crop",
-            rating: 4.6,
-            reviews: 87,
-            category: "Marigolds",
-            description: "Vibrant orange marigolds full of warmth and joy"
-        },
-        {
-            id: 12,
-            name: "White Roses Premium",
-            price: 72.99,
-            originalPrice: 82.99,
-            image: "https://images.unsplash.com/photo-1563241527-3004b7be0ffd?w=400&h=300&fit=crop",
-            rating: 5.0,
-            reviews: 245,
-            category: "Roses",
-            description: "Premium white roses for the most special occasions"
-        }
-    ];
+    useEffect(() => {
+        const fetchFlowers = async () => {
+            try {
+                const res = await fetch("/api/flowers");
+                const data = await res.json();
+                setAllFlowers(data);
+            } catch (err) {
+                console.error("Failed to fetch flowers:", err);
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        fetchFlowers();
+    }, []);
+
 
     const totalPages = Math.ceil(allFlowers.length / flowersPerPage);
     const startIndex = (currentPage - 1) * flowersPerPage;
@@ -164,10 +47,7 @@ const FlowersPage = () => {
         setFavorites(newFavorites);
     };
 
-    // const handleShowDetails = (flower) => {
-    //     alert(`Showing details for: ${flower.name}`);
-    //     // Replace with your actual navigation logic
-    // };
+    
 
     const handleOrder = (flower) => {
         alert(`Adding ${flower.name} to cart!`);
@@ -232,6 +112,12 @@ const FlowersPage = () => {
 
         return pages;
     };
+
+    if (loading) {
+        return <>
+            <p className='text-center min-h-screen'>Cards Loading...</p>
+        </>
+    }
 
     return (
         <div className="min-h-screen bg-gradient-to-br from-rose-50 via-pink-50 to-purple-50">
