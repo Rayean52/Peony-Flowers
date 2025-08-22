@@ -34,8 +34,8 @@ export const authOptions = {
     callbacks: {
         async jwt({ token, user }) {
             if (user) {
-                token.id = user.id;      // add user id to token
-                token.name = user.name;  // ensure name present
+                token.id = user.id;
+                token.name = user.name;
             }
             return token;
         },
@@ -44,6 +44,9 @@ export const authOptions = {
             if (token?.name) session.user.name = token.name;
             return session;
         },
+        async redirect({ url, baseUrl }) {
+            return baseUrl
+        }, 
     },
     secret: process.env.NEXTAUTH_SECRET,
 };

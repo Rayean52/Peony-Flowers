@@ -61,7 +61,7 @@ const Navbar = () => {
                         {!session ? (
                             <div className="flex items-center space-x-3">
                                 <Link
-                                    href="/sign-up"
+                                    href="/login"
                                     className="bg-gradient-to-r from-rose-500 to-pink-500 text-white px-6 py-2 rounded-full text-sm font-medium hover:from-rose-600 hover:to-pink-600 transition-all duration-300 transform hover:-translate-y-0.5 hover:shadow-lg"
                                 >
                                     Sign In

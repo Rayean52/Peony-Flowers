@@ -63,9 +63,9 @@ export default function SignupPage() {
         setIsLoading(false);
 
         if (res.ok) {
-            setMsg("Account created successfully! Redirecting to login...");
+            setMsg("Account created successfully! Redirecting to Home...");
             setMsgType("success");
-            setTimeout(() => router.push("/login"), 1500);
+            setTimeout(() => router.push("/"), 1500);
         } else {
             const { error } = await res.json();
             setMsg(error || "Failed to register. Please try again.");
