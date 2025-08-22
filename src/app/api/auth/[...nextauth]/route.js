@@ -29,7 +29,7 @@ export const authOptions = {
     ],
     session: { strategy: "jwt" },
     pages: {
-        signIn: "/login", 
+        signIn: "/login", // must exist
     },
     callbacks: {
         async jwt({ token, user }) {
@@ -45,8 +45,10 @@ export const authOptions = {
             return session;
         },
         async redirect({ url, baseUrl }) {
-            return baseUrl
-        }, 
+            if (url.startsWith(baseUrl)) return url;
+            if (url.startsWith("/")) return `${baseUrl}${url}`;
+            return baseUrl;
+        },
     },
     secret: process.env.NEXTAUTH_SECRET,
 };
