@@ -28,9 +28,9 @@ export const authOptions = {
         }),
     ],
     session: { strategy: "jwt" },
-    // pages: {
-    //     signIn: "/login", // must exist
-    // },
+    pages: {
+        signIn: "/sign-up", 
+    },
     callbacks: {
         async jwt({ token, user }) {
             if (user) {
