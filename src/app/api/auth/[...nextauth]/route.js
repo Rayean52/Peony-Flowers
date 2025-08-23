@@ -29,7 +29,7 @@ export const authOptions = {
     ],
     session: { strategy: "jwt" },
     pages: {
-        signIn: "/sign-up", 
+        signIn: "/dashboard", 
     },
     callbacks: {
         async jwt({ token, user }) {
